@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/book.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>book catalogue</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <img src="src\assets\book.svg" alt="The Gifts">
+    <h1>The Library</h1>
+    <span>Discover your next favorite book</span>
+  </header>
+  <main class="main">
+    <section class="search-section">
+      <h2>Discover Your Next Great Read</h2>
+      <h3>Search millions of books, build your personal library, and never lose track of what to read next.</h3>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for books by title or author..." />
+        <button id="searchBtn">Search</button>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="results" id="results"></div>
+
+      <aside class="favorites">
+        <h3>Favorites</h3>
+        <div id="favoritesList"></div>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
