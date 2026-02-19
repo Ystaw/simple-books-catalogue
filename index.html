@@ -11,16 +11,31 @@
 <body>
 
   <header class="header">
-    <img src="src\assets\book.svg" alt="The Gifts">
-    <h1>The Library</h1>
-    <span>Discover your next favorite book</span>
+    <div class="logo">
+      <img src="/book.svg" alt="Book icon">
+    </div>
+
+    <div class="header-text">
+      <h3>The Library</h3>
+      <span>Discover your next favorite book</span>
+    </div>
+
   </header>
+
   <main class="main">
+
     <section class="search-section">
-      <h2>Discover Your Next Great Read</h2>
-      <h3>Search millions of books, build your personal library, and never lose track of what to read next.</h3>
+      <div class="search-text">
+        <h1>Discover Your Next Great Read</h1>
+        <span>Search millions of books, build your personal library, and never lose track of what to read next.</span>
+      </div>
+
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search for books by title or author..." />
+        <div class="input-wrapper">
+          <img src="/search.svg" class="search-icon" alt="Search">
+          <input type="text" id="searchInput" placeholder="Search for books by title or author..." />
+        </div>
+
         <button id="searchBtn">Search</button>
       </div>
     </section>
@@ -36,6 +51,13 @@
   </main>
 
   <script type="module" src="/src/main.js"></script>
+
+  <footer class="footer">
+    Powered by
+    <a href="https://openlibrary.org" target="_blank">
+      Open Library
+    </a>
+  </footer>
 </body>
 
 </html>
