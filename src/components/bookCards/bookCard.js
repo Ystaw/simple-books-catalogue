@@ -1,4 +1,9 @@
 import './bookCard.css'
+import {
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite
+} from '../../utils/favoriteBooks.js'
 
 export function BookCard(book) {
     const card = document.createElement('div')
@@ -18,16 +23,8 @@ export function BookCard(book) {
         <div class="book-image-wrapper">
             ${coverElement}
           <button class="favorite-btn">
-                <svg class="heart-icon" viewBox="0 0 24 24">
-                    <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                        2 5.42 4.42 3 7.5 3
-                        9.24 3 10.91 3.81 12 5.09
-                        13.09 3.81 14.76 3 16.5 3
-                        19.58 3 22 5.42 22 8.5
-                        22 12.28 18.6 15.36 13.45 20.04
-                        L12 21.35z"
-                    />
+                <svg class="heart-icon" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.6667 9.33333C13.66 8.36 14.6667 7.19333 14.6667 5.66667C14.6667 4.69421 14.2804 3.76158 13.5928 3.07394C12.9051 2.38631 11.9725 2 11 2C9.82671 2 9.00004 2.33333 8.00004 3.33333C7.00004 2.33333 6.17337 2 5.00004 2C4.02758 2 3.09495 2.38631 2.40732 3.07394C1.71968 3.76158 1.33337 4.69421 1.33337 5.66667C1.33337 7.2 2.33337 8.36667 3.33337 9.33333L8.00004 14L12.6667 9.33333Z"  stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
         </div>
@@ -51,8 +48,26 @@ export function BookCard(book) {
 
     const favBtn = card.querySelector('.favorite-btn')
 
+    if (isFavorite(book)) {
+        favBtn.classList.add('active')
+    }
+
     favBtn.addEventListener('click', () => {
-        favBtn.classList.toggle('active')
+        if (isFavorite(book)) {
+            removeFromFavorites(book.key)
+        } else {
+            addToFavorites(book)
+        }
+
+        document.dispatchEvent(new Event('favoritesUpdated'))
+    })
+
+    document.addEventListener('favoritesUpdated', () => {
+        if (isFavorite(book)) {
+            favBtn.classList.add('active')
+        } else {
+            favBtn.classList.remove('active')
+        }
     })
 
     return card

@@ -1,10 +1,13 @@
 import { searchBooks } from './utils/api.js'
 import { renderBooks } from './views/renderBooks.js'
+import { getFavoriteBooks } from './utils/favoriteBooks.js'
+import { renderFavoriteBooks } from './views/renderFavoriteBooks.js'
 
 export function initApp() {
     const searchBtn = document.getElementById('searchBtn')
     const searchInput = document.getElementById('searchInput')
     const resultsContainer = document.getElementById('results')
+    const favoritesContainer = document.getElementById('favoritesList')
 
     searchBtn.addEventListener('click', async () => {
         const query = searchInput.value.trim()
@@ -35,6 +38,19 @@ export function initApp() {
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             searchBtn.click()
+        }
+    })
+
+    renderFavoriteBooks(getFavoriteBooks(), favoritesContainer)
+
+    document.addEventListener('favoritesUpdated', () => {
+        renderFavoriteBooks(getFavoriteBooks(), favoritesContainer)
+
+        if (resultsContainer.children.length) {
+            const currentBooks = getCurrentBooks()
+            if (currentBooks) {
+                renderBooks(currentBooks, resultsContainer)
+            }
         }
     })
 }

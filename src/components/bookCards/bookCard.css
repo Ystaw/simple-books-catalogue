@@ -30,7 +30,7 @@
     font-size: 14px;
 }
 
-.favorite-btn {
+.book-card .favorite-btn {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.heart-icon {
+.book-card .heart-icon {
     width: 18px;
     height: 18px;
     fill: none;
@@ -54,7 +54,7 @@
     transition: 0.2s;
 }
 
-.favorite-btn.active .heart-icon {
+.book-card .favorite-btn.active .heart-icon {
     fill: var(--red);
     stroke: var(--red);
 }

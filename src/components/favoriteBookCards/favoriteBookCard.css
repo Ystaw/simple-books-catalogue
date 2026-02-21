@@ -1,0 +1,71 @@
+.favorite-book-card {
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.favorite-book-cover {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.favorite-book-info {
+    flex: 1;
+}
+
+.text-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-column h4,
+.text-column p {
+    margin: 0;
+}
+
+.favorite-book-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    color: var(--title);
+    max-width: 160px;
+}
+
+.favorite-book-info p {
+    color: var(--text);
+}
+
+.favorite-book-info .book-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-authors {
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.remove-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.heart-icon {
+    width: 18px;
+    height: 18px;
+    fill: red;
+}
