@@ -9,48 +9,72 @@ export function initApp() {
     const resultsContainer = document.getElementById('results')
     const favoritesContainer = document.getElementById('favoritesList')
 
-    searchBtn.addEventListener('click', async () => {
+    function debounce(fn, delay = 500) {
+        let timeout
+
+        return (...args) => {
+            clearTimeout(timeout)
+            timeout = setTimeout(() => fn(...args), delay)
+        }
+    }
+
+    async function handleSearch() {
         const query = searchInput.value.trim()
 
         if (!query) {
-            resultsContainer.innerHTML = '<p>Enter a search query</p>'
+            renderBooks([], resultsContainer)
+            setOverlayMessage('Enter a search query')
             return
         }
 
         try {
-            resultsContainer.innerHTML = '<p>Loading...</p>'
+            setOverlayMessage('Loading...')
 
             const books = await searchBooks(query)
 
             if (!books.length) {
-                resultsContainer.innerHTML = '<p>Nothing found</p>'
+                setOverlayMessage('Nothing found')
                 return
             }
 
+            setOverlayMessage('', false)
             renderBooks(books, resultsContainer)
 
         } catch (error) {
-            resultsContainer.innerHTML = '<p>Network error</p>'
+            setOverlayMessage('Network error')
             console.error(error)
         }
-    })
+    }
 
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            searchBtn.click()
+    const debouncedSearch = debounce(handleSearch, 500)
+
+    searchBtn.addEventListener('click', handleSearch)
+
+    searchInput.addEventListener('input', () => {
+        if (!searchInput.value.trim()) {
+            renderBooks([], resultsContainer)
+            return
         }
+
+        debouncedSearch()
     })
 
     renderFavoriteBooks(getFavoriteBooks(), favoritesContainer)
 
     document.addEventListener('favoritesUpdated', () => {
         renderFavoriteBooks(getFavoriteBooks(), favoritesContainer)
-
-        if (resultsContainer.children.length) {
-            const currentBooks = getCurrentBooks()
-            if (currentBooks) {
-                renderBooks(currentBooks, resultsContainer)
-            }
-        }
     })
+
+    function setOverlayMessage(text, show = true) {
+        const overlay = document.getElementById('resultsOverlay')
+        const message = overlay.querySelector('.results-message')
+
+        message.textContent = text
+
+        if (show) {
+            overlay.classList.remove('hidden')
+        } else {
+            overlay.classList.add('hidden')
+        }
+    }
 }

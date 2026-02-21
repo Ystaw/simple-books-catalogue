@@ -152,6 +152,12 @@ body {
     margin-bottom: 40px;
 }
 
+.results-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
 .results {
     flex: 1;
     min-width: 0;
@@ -161,6 +167,31 @@ body {
     gap: 15px;
     max-height: 850px;
     overflow-y: auto;
+}
+
+.results-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 865px;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.results-overlay.hidden {
+    display: none;
+}
+
+.results-message {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--title);
 }
 
 .results::-webkit-scrollbar {

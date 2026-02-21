@@ -4,13 +4,22 @@ let allBooks = []
 let currentIndex = 0
 const BOOKS_PER_BATCH = 10
 
-export function renderBooks(books, container) {
+export function renderBooks(books, container, message = null) {
+    const overlay = document.getElementById('resultsOverlay')
     container.innerHTML = ''
 
-    if (!books || books.length === 0) {
-        container.innerHTML = '<p>Nothing found</p>'
+    if (message) {
+        overlay.classList.add('hidden')
+        container.innerHTML = `<p class="results-message">${message}</p>`
         return
     }
+
+    if (!books || books.length === 0) {
+        overlay.classList.remove('hidden')
+        return
+    }
+
+    overlay.classList.add('hidden')
 
     allBooks = books
     currentIndex = 0
@@ -40,12 +49,4 @@ function handleScroll(container) {
     if (bottomReached && currentIndex < allBooks.length) {
         renderNextBatch(container)
     }
-}
-
-export function renderLoading(container) {
-    container.innerHTML = '<p>Loading...</p>'
-}
-
-export function renderError(container, message) {
-    container.innerHTML = `<p>${message}</p>`
 }
