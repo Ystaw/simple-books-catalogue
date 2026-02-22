@@ -274,6 +274,7 @@ body {
 
 .favorites {
     width: 340px;
+    min-height: 860px;
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 15px;
@@ -402,6 +403,7 @@ body {
     .favorites {
         width: 100%;
         order: -1;
+        min-height: 0;
     }
 
     .results {
