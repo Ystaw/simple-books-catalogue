@@ -475,6 +475,11 @@ body {
         padding: 20px 0;
     }
 
+    #searchInput {
+        min-width: 0;
+
+    }
+
     .results {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 12px;
