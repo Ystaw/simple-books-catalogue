@@ -89,3 +89,18 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@media (max-width: 600px) {
+    .book-image-wrapper {
+        height: 240px;
+    }
+
+    .book-title {
+        font-size: 14px;
+    }
+
+    .book-author,
+    .book-year {
+        font-size: 12px;
+    }
+}

@@ -69,3 +69,33 @@
     height: 18px;
     fill: red;
 }
+
+@media (max-width: 980px) and (min-width: 916px) {
+
+    .favorite-book-info h4 {
+        max-width: 60%;
+    }
+
+    .book-authors {
+        max-width: 70px;
+
+    }
+}
+
+@media (max-width: 600px) {
+
+    .favorite-book-cover {
+        width: 60px;
+        height: 90px;
+    }
+
+    .favorite-book-info h4 {
+        max-width: 120px;
+        font-size: 14px;
+    }
+
+    .book-authors {
+        max-width: 120px;
+        font-size: 12px;
+    }
+}

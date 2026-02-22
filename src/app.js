@@ -2,6 +2,7 @@ import { searchBooks } from './utils/api.js'
 import { renderBooks } from './views/renderBooks.js'
 import { getFavoriteBooks } from './utils/favoriteBooks.js'
 import { renderFavoriteBooks } from './views/renderFavoriteBooks.js'
+import { initFavoritesToggle } from './views/favoritesToggle.js'
 
 export function initApp() {
     const searchBtn = document.getElementById('searchBtn')
@@ -91,4 +92,6 @@ export function initApp() {
             overlay.classList.add('hidden')
         }
     }
+
+    initFavoritesToggle()
 }
