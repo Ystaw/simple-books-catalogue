@@ -1,0 +1,70 @@
+## Task
+
+The task description is available in the file:
+(./Innowise_Cтажировка_Простой_каталог_книг.pdf)
+
+The goal of this task is to implement a small web application (without using any libraries or frameworks) that allows users to search for books via a public API, view the results, and add selected books to favorites with persistent storage.
+
+---
+
+## Live Demo
+
+The application is available online:
+https://lucky-meringue-8bfde6.netlify.app/
+
+---
+
+## How to run the app
+
+1. Clone the repository:
+   git clone https://github.com/Ystaw/simple-books-catalogue.git
+
+2. Navigate to the project folder:
+   cd simple-books-catalogue
+
+3. Install dependencies:
+   npm install
+
+4. Start the development server:
+   npm run dev
+
+   The app will be available at:
+   http://localhost:5173
+
+5. Build for production:
+   npm run build
+
+6. Preview the production build:
+   npm run preview
+
+---
+
+## Project Structure
+
+public/                     - Static assets (icons)
+
+src/
+  components/
+    bookCards/              - Book card component (UI and styles)
+    favoriteBookCards/      - Favorite book card component (UI and styles)
+
+  controllers/              - Application logic and event handling
+    searchController.js
+    favoritesController.js
+
+  views/                    - Rendering logic
+    renderBooks.js
+    renderFavoriteBooks.js
+    overlay.js
+    favoritesToggle.js
+
+  utils/                    - Utility modules
+    booksApi.js             - API requests
+    debounce.js             - Debounce helper
+    theme.js                - Theme management
+    favoriteBooks.js        - localStorage logic
+
+  app.js                    - Application initialization
+  main.js                   - Entry point
+
+dist/                       - Production build
